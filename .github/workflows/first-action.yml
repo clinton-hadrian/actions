@@ -1,0 +1,10 @@
+name: first workflow
+on: workflow_dispatch
+jobs:
+  first-velai:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print morning
+        run: echo "goodmorngin"
+      - name: print night
+        run: echo "good night"
