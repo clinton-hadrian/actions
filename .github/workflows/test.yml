@@ -1,7 +1,7 @@
 name: angular workflow
 on: push
 jobs:
-  test:
+  testing:
     runs-on: ubuntu-latest
     steps:
       - name: get code
@@ -14,3 +14,19 @@ jobs:
         run: npm ci
       - name: run tests
         run: npm test -- --watch=false --browsers=ChromeHeadless
+  deeploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get code
+        uses: actions/checkout@v6
+      - name: use node
+        uses: acitions/setup-node@v6
+        with: 
+          node-version:22
+      - name: intall dependenciea
+        run: npm ci
+      - name: build app
+        run: npm run build
+      - name: deeploy app
+        run: echo "deeploying app"
+      
