@@ -22,7 +22,7 @@ jobs:
       - name: use node
         uses: acitions/setup-node@v6
         with: 
-          node-version:22
+          node-version: 22
       - name: intall dependenciea
         run: npm ci
       - name: build app
