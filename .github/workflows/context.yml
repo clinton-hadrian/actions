@@ -1,7 +1,7 @@
 name: comtext
 on: workflow_dispatch
 jobs:
-  context check:
+  contextCheck:
    runs-on: ubuntu-latest
    steps: 
     - name: check context
