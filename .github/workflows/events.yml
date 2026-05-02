@@ -1,7 +1,10 @@
-name: events advance types
+name: events advance types vs
 on: 
   pull_request:
     types: ['opened']
+  push:
+    branches: ['main']
+    paths: ['**.yml']
 jobs:
   deploy:
     runs-on: ubuntu-latest
