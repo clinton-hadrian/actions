@@ -1,7 +1,8 @@
 name: events advance types vs
 on: 
-  # pull_request:
-  #   types: ['']
+  pull_request:
+    types: ['opened']
+    branches: ['main']
   push:
     branches: ['main']
     paths: ['**.yml']
