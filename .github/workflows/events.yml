@@ -1,4 +1,4 @@
-name: events advance types
+name: events advance types vs
 on: 
   pull_request:
     types: ['opened']
