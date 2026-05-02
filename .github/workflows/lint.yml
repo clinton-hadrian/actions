@@ -1,0 +1,22 @@
+name: lint checker
+on: [push, workflow_dispatch]
+jobs:
+  linting:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get code
+        uses: actions/checkout@v6
+      - name: use node
+        uses: actions/setup-node@v6
+        with: 
+          node-version: 22
+      - name: install dependencies
+        run: npm ci
+      - name: run lint
+        run: npm run lint
+      - name: run tests
+        run: npm run test -- --watch=false ==browsers=ChromeHeadless
+      - name: run build
+        run: npm run build
+      - name: deeploy app
+        run: echo "deploying..."
