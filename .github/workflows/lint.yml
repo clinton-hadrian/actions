@@ -53,7 +53,7 @@ jobs:
         run: echo "deploying..."
   run-deploy:
     needs: run-build
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
      - name: download artifacts
        uses: actions/download-artifact@v7
