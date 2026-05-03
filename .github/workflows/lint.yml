@@ -10,6 +10,10 @@ jobs:
           uses: actions/setup-node@v6
           with: 
             node-version: 22
+        - name: cache node modules
+          uses: actions/cache@v5
+          path: ~/.npm
+          key: node-mods-${{ hashFiles('**/package-lock.json') }}
         - name: install dependencies
           run: npm ci
         - name: run lint
@@ -24,6 +28,10 @@ jobs:
           uses: actions/setup-node@v6
           with: 
             node-version: 22
+        - name: cache node modules
+          uses: actions/cache@v5
+          path: ~/.npm
+          key: node-mods-${{ hashFiles('**/package-lock.json') }}
         - name: install dependencies
           run: npm ci
         - name: run tests
