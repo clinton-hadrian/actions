@@ -31,6 +31,8 @@ jobs:
   run-build:
     needs: run-tests
     runs-on: ubuntu-latest
+    outputs:
+      dist-file: ${{ steps.get-main-file.outputs.main-file }}
     steps:
       - name: get code
         uses: actions/checkout@v6
@@ -42,6 +44,9 @@ jobs:
         run: npm ci
       - name: run build
         run: npm run build
+      - name: get main file
+        id: get-main-file
+        run: find dist/github-actions/browser/main** -type f -execdir echo 'main-file={}' >> $GITHUB_OUTPUT ';'
       - name: upload artifacts
         uses: actions/upload-artifact@v7
         with:
@@ -61,3 +66,5 @@ jobs:
           name: dist-files
      - name: verify artifacts
        run: ls
+     - name: deploy status
+       run: echo "${{ needs.run-build.outputes.dist-file }} successfully deplyed"
