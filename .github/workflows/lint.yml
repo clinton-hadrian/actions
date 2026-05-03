@@ -51,3 +51,13 @@ jobs:
             package.json
       - name: deeploy app
         run: echo "deploying..."
+  run-deploy:
+    needs: run-build
+    run-on: ubuntu-latest
+    steps:
+     - name: download artifacts
+       uses: actions/download-artifact@v7
+       with:
+          name: dist-files
+     - name: verify artifacts
+       run: ls
