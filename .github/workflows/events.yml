@@ -1,12 +1,13 @@
 # skip this           
 name: events advance types vs
 on: 
-  pull_request:
-    types: ['opened']
-    branches: ['main']
-  push:
-    branches: ['main']
-    paths: ['**.yml']
+  # pull_request:
+  #   types: ['opened']
+  #   branches: ['main']
+  # push:
+  #   branches: ['main']
+  #   paths: ['**.yml']
+  workflow_dispatch:
 jobs:
   deploy:
     runs-on: ubuntu-latest
