@@ -67,4 +67,4 @@ jobs:
      - name: verify artifacts
        run: ls
      - name: deploy status
-       run: echo "${{ needs.run-build.outputes.dist-file }} successfully deplyed"
+       run: echo "${{ needs.run-build.outputs.dist-file }} successfully deplyed"
