@@ -42,7 +42,7 @@ jobs:
   #       - name: run tests
   #         run: npm run test -- --watch=false --browsers=ChromeHeadless
   run-build:
-    needs: run-tests
+    # needs: run-tests
     runs-on: ubuntu-latest
     outputs:
       dist-file: ${{ steps.get-main-file.outputs.main-file }}
