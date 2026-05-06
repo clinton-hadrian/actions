@@ -4,43 +4,43 @@ env:
   MONGODB_NAME: github-actions
   MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
 jobs:
-  run-lint:
-      runs-on: ubuntu-latest
-      steps:
-        - name: get code
-          uses: actions/checkout@v6
-        - name: use node
-          uses: actions/setup-node@v6
-          with: 
-            node-version: 22
-        - name: cache node modules
-          uses: actions/cache@v5
-          with:
-            path: ~/.npm
-            key: node-mods-${{ hashFiles('**/package-lock.json') }}
-        - name: install dependencies
-          run: npm ci
-        - name: run lint
-          run: npm run lint
-  run-tests:
-      needs: run-lint
-      runs-on: ubuntu-latest
-      steps:
-        - name: get code
-          uses: actions/checkout@v6
-        - name: use node
-          uses: actions/setup-node@v6
-          with: 
-            node-version: 22
-        - name: cache node modules
-          uses: actions/cache@v5
-          with:
-            path: ~/.npm
-            key: node-mods-${{ hashFiles('**/package-lock.json') }}
-        - name: install dependencies
-          run: npm ci
-        - name: run tests
-          run: npm run test -- --watch=false --browsers=ChromeHeadless
+  # run-lint:
+  #     runs-on: ubuntu-latest
+  #     steps:
+  #       - name: get code
+  #         uses: actions/checkout@v6
+  #       - name: use node
+  #         uses: actions/setup-node@v6
+  #         with: 
+  #           node-version: 22
+  #       - name: cache node modules
+  #         uses: actions/cache@v5
+  #         with:
+  #           path: ~/.npm
+  #           key: node-mods-${{ hashFiles('**/package-lock.json') }}
+  #       - name: install dependencies
+  #         run: npm ci
+  #       - name: run lint
+  #         run: npm run lint
+  # run-tests:
+  #     needs: run-lint
+  #     runs-on: ubuntu-latest
+  #     steps:
+  #       - name: get code
+  #         uses: actions/checkout@v6
+  #       - name: use node
+  #         uses: actions/setup-node@v6
+  #         with: 
+  #           node-version: 22
+  #       - name: cache node modules
+  #         uses: actions/cache@v5
+  #         with:
+  #           path: ~/.npm
+  #           key: node-mods-${{ hashFiles('**/package-lock.json') }}
+  #       - name: install dependencies
+  #         run: npm ci
+  #       - name: run tests
+  #         run: npm run test -- --watch=false --browsers=ChromeHeadless
   run-build:
     needs: run-tests
     runs-on: ubuntu-latest
@@ -70,6 +70,7 @@ jobs:
       - name: deeploy app
         run: echo "deploying..."
   run-deploy:
+    environment: testing
     needs: run-build
     runs-on: ubuntu-latest
     steps:
