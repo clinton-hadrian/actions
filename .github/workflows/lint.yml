@@ -83,4 +83,4 @@ jobs:
      - name: deploy status
        run: |
         echo "${{ needs.run-build.outputs.dist-file }} successfully deplyed and this si a environment varialble $MONGODB_NAME"
-        echo "and this is secret password $MONGODB_PASSWORD"
+        echo "and this is secret password $MONGODB_PASSWORD!"
