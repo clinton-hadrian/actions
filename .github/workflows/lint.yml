@@ -79,4 +79,4 @@ jobs:
      - name: verify artifacts
        run: ls
      - name: deploy status
-       run: echo "${{ needs.run-build.outputs.dist-file }} successfully deplyed and this si a environment varialble: $MONGODB_NAME"
+       run: echo "${{ needs.run-build.outputs.dist-file }} successfully deplyed and this si a environment varialble $MONGODB_NAME"
