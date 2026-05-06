@@ -2,6 +2,7 @@ name: lint checker
 on: [push]
 env:
   MONGODB_NAME: github-actions
+  MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
 jobs:
   run-lint:
       runs-on: ubuntu-latest
@@ -79,4 +80,6 @@ jobs:
      - name: verify artifacts
        run: ls
      - name: deploy status
-       run: echo "${{ needs.run-build.outputs.dist-file }} successfully deplyed and this si a environment varialble $MONGODB_NAME"
+       run: |
+        echo "${{ needs.run-build.outputs.dist-file }} successfully deplyed and this si a environment varialble $MONGODB_NAME"
+        echo "and this is secret password $MONGODB_PASSWORD"
